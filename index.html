@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>January, USA — Maintenance</title>
+
+  <style>
+    :root {
+      /* Pulled directly from your current site for exact color matching */
+      --soft-black: #1b1b1f;
+      --winter-white: #e2ecec;
+      --blood-red: #8a1827;
+      --winter-blue: #7fbbd8;
+      --pine-green: #1d3134;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', Arial, sans-serif;
+      color: var(--winter-white);
+      background-image: url('https://i.postimg.cc/s2wJCt4z/JS-bkgd-pine-1-copy.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Scrolling banner at top (pauses on hover), matching your current site */
+    .ticker-container {
+      background: var(--blood-red);
+      border-top: 2px solid var(--blood-red);
+      border-bottom: 2px solid var(--blood-red);
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .ticker-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 30s linear infinite;
+      color: var(--winter-white);
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    .ticker-container:hover .ticker-text {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Centered main box, matching your current site (slightly narrower) */
+    .container {
+      background-color: var(--soft-black);
+      border: 3px solid var(--winter-white);
+      max-width: 880px; /* 10px narrower on each side vs 900px */
+      margin: 50px auto;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    header {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    /* Make the main title about half the size */
+    h1 {
+      color: var(--winter-white);
+      border-bottom: 1px solid var(--winter-white);
+      padding-bottom: 6px;
+      margin: 0 0 10px 0;
+      font-size: 1.05em; /* reduced */
+      font-weight: bold;
+      letter-spacing: 0.2px;
+    }
+
+    /* Top links (clickable but intentionally lead nowhere for now) */
+    .top-links {
+      margin: 6px 0 0 0;
+      font-size: 0.95em;
+      line-height: 1.2;
+    }
+
+    .top-links a {
+      color: var(--winter-blue);
+      text-decoration: none;
+    }
+
+    .top-links a:hover {
+      text-decoration: underline;
+    }
+
+    .message p {
+      margin: 0 0 12px 0;
+      line-height: 1.6;
+    }
+
+    /* Primary footer (visible) */
+    .footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(226, 236, 236, 0.35);
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    /* Snowflake motif area (left-aligned like the rest of the text) */
+    .motif-wrap {
+      margin-top: 18px;
+      padding-top: 10px;
+      text-align: left;
+    }
+
+    .motif {
+      display: inline-block;
+      font-size: 18px;
+      line-height: 1;
+      opacity: 0.85;
+      cursor: default; /* IMPORTANT: does not advertise clickability */
+    }
+
+    /* Hidden line style (appears where the snowflake used to be) */
+    .secret-line {
+      display: inline-block;
+      text-align: left;
+      font-size: 0.8em;
+      letter-spacing: 0.2px;
+      opacity: 0.9;
+    }
+
+    /* Optional: slightly tighter layout on small screens */
+    @media (max-width: 980px) {
+      .container { margin: 28px 12px; padding: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ticker-container">
+    <div class="ticker-text"> Join I-Skate Weekly - January's amateur ice skating club | Town hall meetings now occur every first Tuesday | The deadline to request a copy of the 2006 snow plow schedule is January 11th | Exit 19 closed until further notice </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>January, USA</h1>
+      <div class="top-links" aria-label="Site navigation (placeholder)">
+        <a href="#" onclick="return false;">Home</a> |
+        <a href="#" onclick="return false;">Information</a> |
+        <a href="#" onclick="return false;">Things To Do</a> |
+        <a href="#" onclick="return false;">Discussion</a> |
+        <a href="#" onclick="return false;">Shop</a> |
+        <a href="#" onclick="return false;">Login</a>
+      </div>
+    </header>
+
+    <section class="message" aria-label="Maintenance message">
+      <p>This site is temporarily unavailable due to ongoing maintenance.</p>
+      <p>January is closed for the season.</p>
+      <p>Please return in January.</p>
+
+      <div class="footer">
+        <div>Winter conditions persist.</div>
+        <div>Thank you for your patience.</div>
+      </div>
+
+      <!-- Motif that reveals the hidden line. Once clicked, it is replaced and cannot be toggled back without refresh. -->
+      <div class="motif-wrap">
+        <span id="snowflake" class="motif" aria-label="Town motif">❄</span>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // One-way reveal: click replaces the motif with the hidden line (no toggle back unless refresh).
+    (function () {
+      const snowflake = document.getElementById('snowflake');
+      let revealed = false;
+
+      function revealSecret() {
+        if (revealed) return;
+        revealed = true;
+
+        // Replace the snowflake with the hidden line in the same spot.
+        const wrap = snowflake.parentElement;
+        wrap.innerHTML = `
+          <div class="secret-line">❄ If you believe you have arrived at the wrong site, please verify your location.</div>
+        `;
+      }
+
+      // Intentionally no hover styling or pointer cursor — it should feel like a decorative glyph.
+      snowflake.addEventListener('click', revealSecret);
+
+      // Also allow keyboard activation if someone happens to tab to it (rare, but accessible).
+      snowflake.setAttribute('tabindex', '0');
+      snowflake.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          revealSecret();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
