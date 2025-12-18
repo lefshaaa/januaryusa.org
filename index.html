@@ -138,6 +138,25 @@
     @media (max-width: 980px) {
       .container { margin: 28px 12px; padding: 22px; }
     }
+
+/* Make sure the main box is in its own stacking layer */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Make sure the nav line is above any accidental overlays */
+.top-links {
+  position: relative;
+  z-index: 3;
+}
+
+/* Keep the ticker underneath the main box */
+.ticker-container {
+  position: relative;
+  z-index: 1;
+}
+
   </style>
 </head>
 
@@ -155,7 +174,7 @@
         <a href="#arrival-unconfirmed" onclick="return false;">Things To Do</a> |
         <a href="#arrival-unconfirmed" onclick="return false;">Discussion</a> |
         <a href="#arrival-unconfirmed" onclick="return false;">Shop</a> |
-        <a href="login.html#arrival-unconfirmed" onclick="return false;">Login</a>
+        <a href="login.html#arrival-unconfirmed">Login</a>
       </div>
     </header>
 
