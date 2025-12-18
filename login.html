@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>January, USA — Citizen Access Portal</title>
+
+  <style>
+    :root {
+      /* Keep identical to your maintenance page so it feels like the same site */
+      --soft-black: #1b1b1f;
+      --winter-white: #e2ecec;
+      --blood-red: #8a1827;
+      --winter-blue: #7fbbd8;
+      --pine-green: #1d3134;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', Arial, sans-serif;
+      color: var(--winter-white);
+      background-image: url('https://i.postimg.cc/s2wJCt4z/JS-bkgd-pine-1-copy.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Top ticker (pauses on hover) */
+    .ticker-container {
+      background: var(--blood-red);
+      border-top: 2px solid var(--blood-red);
+      border-bottom: 2px solid var(--blood-red);
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .ticker-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 30s linear infinite;
+      color: var(--winter-white);
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    .ticker-container:hover .ticker-text {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Center container */
+    .container {
+      background-color: var(--soft-black);
+      border: 3px solid var(--winter-white);
+      max-width: 880px;
+      margin: 50px auto;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    header {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: var(--winter-white);
+      border-bottom: 1px solid var(--winter-white);
+      padding-bottom: 6px;
+      margin: 0 0 10px 0;
+      font-size: 1.05em;
+      font-weight: bold;
+      letter-spacing: 0.2px;
+    }
+
+    .top-links {
+      margin: 6px 0 0 0;
+      font-size: 0.95em;
+      line-height: 1.2;
+    }
+
+    .top-links a {
+      color: var(--winter-blue);
+      text-decoration: none;
+    }
+
+    .top-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Login form styling (retro, simple, believable) */
+    .panel {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(226, 236, 236, 0.35);
+    }
+
+    .panel-title {
+      font-weight: bold;
+      margin: 0 0 10px 0;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 6px 0;
+      font-size: 0.95em;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 320px;
+      max-width: 100%;
+      padding: 7px 8px;
+      border: 1px solid rgba(226, 236, 236, 0.65);
+      background: rgba(0, 0, 0, 0.15);
+      color: var(--winter-white);
+      outline: none;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      color: rgba(226, 236, 236, 0.7);
+    }
+
+    .row {
+      margin-top: 12px;
+    }
+
+    button {
+      padding: 7px 12px;
+      border: 1px solid rgba(226, 236, 236, 0.8);
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--winter-white);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--blood-red);
+      border-color: var(--blood-red);
+    }
+
+    .msg {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(226, 236, 236, 0.25);
+      font-size: 0.95em;
+      line-height: 1.5;
+      display: none; /* shown after submit */
+    }
+
+    .msg strong {
+      font-weight: bold;
+    }
+
+    /* Tiny “system” hint that’s still believable */
+    .fineprint {
+      margin-top: 14px;
+      font-size: 0.8em;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 980px) {
+      .container { margin: 28px 12px; padding: 22px; }
+    }
+
+.req {
+  color: var(--blood-red);
+  margin-left: 4px;
+  visibility: hidden; /* hidden by default */
+  font-weight: bold;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="ticker-container">
+    <div class="ticker-text"> Join I-Skate Weekly - January's amateur ice skating club | Town hall meetings now occur every first Tuesday | The deadline to request a copy of the 2006 snow plow schedule is January 11th | Exit 19 closed until further notice</div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>January, USA</h1>
+      <div class="top-links" aria-label="Site navigation">
+        <a href="index.html#arrival-unconfirmed">Home</a> |
+        <a href="#arrival-unconfirmed" onclick="return false;">Information</a> |
+        <a href="#arrival-unconfirmed" onclick="return false;">Things To Do</a> |
+        <a href="#arrival-unconfirmed" onclick="return false;">Discussion</a> |
+        <a href="#arrival-unconfirmed" onclick="return false;">Shop</a> |
+        <a href="login.html#restricted-access">Login</a>
+      </div>
+    </header>
+
+    <main class="panel" aria-label="Citizen Access Portal">
+      <div class="panel-title">Citizen Access Portal</div>
+
+      <!-- Fake login form: inputs work, submit shows a message. No data is sent anywhere. -->
+      <form id="loginForm" autocomplete="off">
+       <label for="username">
+  Username <span class="req" id="userReq">*</span>
+</label>
+<input id="username" name="username" type="text" placeholder="enter username" />
+
+<label for="password">
+  Password <span class="req" id="passReq">*</span>
+</label>
+<input id="password" name="password" type="password" placeholder="enter password" />
+
+
+        <div class="row">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <div id="msg" class="msg" aria-live="polite"></div>
+
+      <div class="fineprint">Authorized residents only. Status is subject to change.</div>
+    </main>
+  </div>
+
+ <script>
+  (function () {
+    const form = document.getElementById('loginForm');
+    const msg = document.getElementById('msg');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+
+    const userReq = document.getElementById('userReq');
+    const passReq = document.getElementById('passReq');
+
+    const emptyFieldsMessage = [
+      '<strong>Submission failed.</strong>',
+      'Required fields cannot be left blank.'
+    ].join('<br>');
+
+    const accessDeniedMessage = [
+      '<strong>Oops! Your arrival is earlier than expected.</strong>',
+      'Your current status does not meet access requirements.',
+      'Please continue with standard daily activity until further notice.'
+    ].join('<br>');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const hasUsername = username.value.trim().length > 0;
+      const hasPassword = password.value.trim().length > 0;
+
+      // Reset indicators
+      userReq.style.visibility = 'hidden';
+      passReq.style.visibility = 'hidden';
+
+      // Show processing state
+      msg.innerHTML = 'Processing...';
+      msg.style.display = 'block';
+
+      setTimeout(function () {
+        if (!hasUsername || !hasPassword) {
+          // Show red asterisks where needed
+          if (!hasUsername) userReq.style.visibility = 'visible';
+          if (!hasPassword) passReq.style.visibility = 'visible';
+
+          msg.innerHTML = emptyFieldsMessage;
+        } else {
+          msg.innerHTML = accessDeniedMessage;
+          password.value = ''; // clear password for realism
+        }
+      }, 2000);
+    });
+  })();
+</script>
+</body>
+</html>
